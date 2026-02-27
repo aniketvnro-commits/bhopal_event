@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>आजीविका फ्रेश मेला - प्रीमियम अनुभव</title>
+    <!-- External Dependencies via CDN for GitHub Pages Compatibility -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #1a1412;
+            --accent: #d97706;
+        }
+        body {
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            background-color: var(--bg-deep);
+            color: #f3f4f6;
+            scroll-behavior: smooth;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.15) 0%, rgba(26, 20, 18, 0) 70%);
+        }
+        .stall-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .stall-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(217, 119, 6, 0.4);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1412; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d97706; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] flex flex-col justify-center px-6 md:px-20 hero-gradient">
+        <!-- Floating Elements -->
+        <div class="absolute top-20 right-10 opacity-20 hidden lg:block">
+            <svg width="400" height="400" viewBox="0 0 200 200">
+                <path fill="#d97706" d="M44.7,-76.4C58.2,-69.3,69.6,-57.1,77.3,-43.2C85,-29.3,89,-13.7,87.6,1.4C86.2,16.5,79.4,31.1,70.1,43.4C60.8,55.8,49,65.8,35.6,72.4C22.2,79,7.2,82.2,-8.1,80.8C-23.4,79.4,-39,73.4,-52,64.1C-65.1,54.8,-75.6,42.2,-81.4,27.8C-87.2,13.4,-88.3,-2.8,-84.9,-18.1C-81.5,-33.4,-73.6,-47.8,-61.8,-55.5C-50,-63.2,-34.4,-64.1,-20.5,-71.4C-6.6,-78.7,5.5,-92.4,20.5,-91.3C35.6,-90.3,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+
+        <div class="max-w-3xl z-10">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 text-white leading-tight">
+                खोजें <span class="text-orange-500">उत्कृष्ट</span> स्वाद!
+            </h1>
+            <p class="text-lg md:text-xl text-stone-400 mb-10 leading-relaxed font-light">
+                आजीविका फ्रेश मेला - जहाँ हर स्टॉल की अपनी एक कहानी है और हर स्वाद में शुद्धता का संगम है।
+            </p>
+            <a href="#stalls" class="inline-block bg-orange-600 hover:bg-orange-500 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-orange-900/20">
+                स्टॉल देखें
+            </a>
+        </div>
+    </section>
+
+    <!-- Stall Grid -->
+    <section id="stalls" class="py-24 px-6 md:px-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="stall-grid">
+            <!-- Stalls injected by JS -->
+        </div>
+    </section>
+
+    <!-- Detailed Menu Modal -->
+    <div id="menu-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md">
+        <div class="bg-[#1a1412] w-full max-w-lg rounded-[40px] overflow-hidden border border-white/10 shadow-2xl scale-95 transition-all duration-300" id="modal-container">
+            <div id="modal-header" class="p-8 text-white flex justify-between items-start border-b border-white/5">
+                <div>
+                    <h2 id="modal-title" class="text-3xl font-bold mb-1">स्टॉल का नाम</h2>
+                    <p id="modal-category" class="text-orange-500 uppercase tracking-widest text-xs font-bold"></p>
+                </div>
+                <button onclick="closeModal()" class="bg-white/5 hover:bg-white/10 p-3 rounded-full transition-colors text-stone-400">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-8">
+                <ul id="modal-items" class="space-y-6">
+                    <!-- Menu items injected here -->
+                </ul>
+                <button onclick="closeModal()" class="w-full mt-10 bg-orange-600 hover:bg-orange-500 text-white font-bold py-4 rounded-2xl transition-all">
+                    वापस जाएं
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-12 border-t border-white/5 text-center text-stone-500 text-sm">
+        <p>© 2024 आजीविका फ्रेश मेला • डिजाइन बाय बोडरिन इंस्पायर्ड</p>
+    </footer>
+
+    <script>
+        const stallData = [
+            {
+                id: 1,
+                name: "STALL 1",
+                subtitle: "ताज़ा पेय",
+                category: "Beverages",
+                items: [
+                    { name: "केसरिया लस्सी", desc: "शुद्ध दही और केसर का मिश्रण", price: "50 p." },
+                    { name: "मसाला छाछ", desc: "भुना जीरा और पुदीना युक्त", price: "30 p." },
+                    { name: "ताज़ा नींबू पानी", desc: "प्राकृतिक विटामिन सी से भरपूर", price: "20 p." }
+                ]
+            },
+            {
+                id: 2,
+                name: "STALL 2",
+                subtitle: "चटपटा नाश्ता",
+                category: "Snacks",
+                items: [
+                    { name: "आलू समोसा", desc: "खस्ता और मसालेदार", price: "30 p." },
+                    { name: "प्याज कचौड़ी", desc: "जोधपुरी स्टाइल", price: "25 p." },
+                    { name: "साबूदाना वड़ा", desc: "व्रत के लिए भी उत्तम", price: "45 p." }
+                ]
+            },
+            {
+                id: 3,
+                name: "STALL 3",
+                subtitle: "मुख्य भोजन",
+                category: "Main Course",
+                items: [
+                    { name: "स्पेशल वेज थाली", desc: "5 विभिन्न व्यंजनों के साथ", price: "120 p." },
+                    { name: "दाल बाटी चूरमा", desc: "देसी घी का स्वाद", price: "100 p." },
+                    { name: "छोले भटूरे", desc: "पंजाबी स्टाइल मसाले", price: "80 p." }
+                ]
+            },
+            {
+                id: 4,
+                name: "STALL 4",
+                subtitle: "क्षेत्रीय स्वाद",
+                category: "Regional",
+                items: [
+                    { name: "लिट्टी चोखा", desc: "बिहार का पारंपरिक गौरव", price: "70 p." },
+                    { name: "पाव भाजी", desc: "मुंबई का असली स्वाद", price: "60 p." },
+                    { name: "मक्की दी रोटी", desc: "सरसों साग के साथ", price: "90 p." }
+                ]
+            },
+            {
+                id: 5,
+                name: "STALL 5",
+                subtitle: "दक्षिण संगम",
+                category: "South Indian",
+                items: [
+                    { name: "मसाला डोसा", desc: "कुरकुरा और लाजवाब", price: "70 p." },
+                    { name: "इडली सांभर", desc: "मुलायम और ताज़ा", price: "40 p." },
+                    { name: "मेदू वड़ा", desc: "सांभर में डूबा हुआ", price: "50 p." }
+                ]
+            },
+            {
+                id: 6,
+                name: "STALL 6",
+                subtitle: "मीठा दरबार",
+                category: "Sweets",
+                items: [
+                    { name: "जलेबी", desc: "शुद्ध घी में तली हुई", price: "40 p." },
+                    { name: "गुलाब जामुन", desc: "मावा से भरपूर", price: "30 p." },
+                    { name: "रसमलाई", desc: "स्वादिष्ट और मलाईदार", price: "50 p." }
+                ]
+            }
+        ];
+
+        function renderStalls() {
+            const grid = document.getElementById('stall-grid');
+            grid.innerHTML = stallData.map(stall => `
+                <div onclick="openStall(${stall.id})" class="stall-card glass p-8 rounded-[40px] text-center relative group">
+                    <div class="mb-4 text-xs font-bold text-orange-500 uppercase tracking-tighter opacity-60">${stall.subtitle}</div>
+                    <h2 class="text-3xl font-bold mb-2 group-hover:text-orange-500 transition-colors">${stall.name}</h2>
+                    <p class="text-stone-500 text-sm mb-6">${stall.category}</p>
+                    
+                    <div class="flex justify-center items-center gap-4 mt-4">
+                        <span class="text-stone-400 font-light">मेनू देखें</span>
+                        <div class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center text-stone-300 group-hover:bg-orange-600 group-hover:border-orange-600 group-hover:text-white transition-all">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openStall(id) {
+            const stall = stallData.find(s => s.id === id);
+            const modal = document.getElementById('menu-modal');
+            const container = document.getElementById('modal-container');
+            const title = document.getElementById('modal-title');
+            const category = document.getElementById('modal-category');
+            const list = document.getElementById('modal-items');
+
+            title.innerText = stall.name;
+            category.innerText = stall.category;
+            
+            list.innerHTML = stall.items.map(item => `
+                <li class="flex justify-between items-center group">
+                    <div>
+                        <h4 class="text-xl font-semibold text-stone-100">${item.name}</h4>
+                        <p class="text-stone-500 text-xs font-light">${item.desc}</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-lg font-bold text-orange-400">${item.price}</span>
+                        <button class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center text-stone-500 hover:bg-orange-600 hover:text-white transition-all">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+                        </button>
+                    </div>
+                </li>
+            `).join('');
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.style.transform = "scale(1)";
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('menu-modal');
+            const container = document.getElementById('modal-container');
+            container.style.transform = "scale(0.95)";
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 200);
+        }
+
+        document.getElementById('menu-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', renderStalls);
+    </script>
+</body>
+</html>
