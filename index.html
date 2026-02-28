@@ -200,7 +200,7 @@
             <div class="p-8 md:p-20 max-h-[90vh] overflow-y-auto">
                 <div class="flex justify-between items-start mb-12 md:mb-16">
                     <div class="space-y-3">
-                        <span id="modal-category" class="text-yellow-500 text-[9px] md:text-[11px] font-black uppercase tracking-[0.6em] block">मध्य प्रदेश</span>
+                        <span id="modal-category" class="text-yellow-500 text-[9px] md:text-[11px] font-black uppercase tracking-[0.6em] block">स्टॉल</span>
                         <h2 id="modal-title" class="text-4xl md:text-7xl font-black tracking-tighter text-white"></h2>
                     </div>
                     <button onclick="closeModal()" class="glass p-4 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
@@ -246,87 +246,85 @@
             {
                 id: 1,
                 name: "जिला – भोपाल",
-                subtitle: "Bhopal Hatt Special",
+                subtitle: "Stall 1",
                 items: [
-                    { name: "ठंडाई", price: "₹30", quantity: "1 गिलास", desc: "ताज़गी से भरपूर पारंपरिक ठंडाई" }
+                    { name: "ठंडा", price: "₹30", quantity: "1 गिलास", desc: "ताज़गी से भरपूर पारंपरिक पेय" }
                 ]
             },
             {
                 id: 2,
                 name: "जिला – जबलपुर",
-                subtitle: "Jabalpur Flavors",
+                subtitle: "Stall 2",
                 items: [
-                    { name: "नमकीन", price: "₹50", quantity: "200 ग्राम", desc: "चटपटी जबलपुरिया नमकीन" }
+                    { name: "नमकीन", price: "₹50", quantity: "200 ग्राम", desc: "जबलपुर की खास चटपटी नमकीन" },
+                    { name: "गुजिया", price: "₹10", quantity: "1 पीस", desc: "मावे से भरपूर ताज़ा गुजिया" },
+                    { name: "गुजिया", price: "₹100", quantity: "1 पैकेट", desc: "प्रीमियम गुजिया पैक" }
                 ]
             },
             {
                 id: 3,
-                name: "जिला – जबलपुर",
-                subtitle: "Sweet Jabalpur",
+                name: "जिला – रीवा",
+                subtitle: "Stall 3",
                 items: [
-                    { name: "गुजिया (प्रति पीस)", price: "₹10", quantity: "1 पीस", desc: "मावे से भरपूर ताज़ा गुजिया" },
-                    { name: "गुजिया (पैकेट)", price: "₹100", quantity: "1 पैकेट", desc: "प्रीमियम गुजिया पैक" }
+                    { name: "गुजिया", price: "₹150", quantity: "250 ग्राम", desc: "विंध्य क्षेत्र की प्रसिद्ध गुजिया" },
+                    { name: "गुजिया", price: "₹300", quantity: "500 ग्राम", desc: "पारिवारिक पैक" },
+                    { name: "गुजिया", price: "₹600", quantity: "1 किलो", desc: "बड़ा उत्सव पैक" },
+                    { name: "सलौनी", price: "₹150", quantity: "200 ग्राम", desc: "क्रिस्पी और स्वादिष्ट" },
+                    { name: "सलौनी", price: "₹200", quantity: "400 ग्राम", desc: "ताज़ा बनी सलौनी" },
+                    { name: "सलौनी", price: "₹400", quantity: "800 ग्राम", desc: "स्पेशल पैक" }
                 ]
             },
             {
                 id: 4,
-                name: "जिला – रीवा",
-                subtitle: "Rewa Delights",
+                name: "जिला – रतलाम",
+                subtitle: "Stall 4",
                 items: [
-                    { name: "गुजिया (250 ग्राम)", price: "₹150", quantity: "250 ग्राम", desc: "विंध्य क्षेत्र की प्रसिद्ध गुजिया" },
-                    { name: "गुजिया (500 ग्राम)", price: "₹300", quantity: "500 ग्राम", desc: "पारिवारिक पैक" },
-                    { name: "गुजिया (1 किलोग्राम)", price: "₹600", quantity: "1 किलोग्राम", desc: "बड़ा उत्सव पैक" }
+                    { name: "नमकीन", price: "₹50", quantity: "250 ग्राम", desc: "तीखी और स्वादिष्ट रतलामी नमकीन" },
+                    { name: "नमकीन", price: "₹120", quantity: "500 ग्राम", desc: "शुद्ध मसालों का मेल" },
+                    { name: "चिप्स", price: "₹80", quantity: "250 ग्राम", desc: "कुरकुरे आलू चिप्स" },
+                    { name: "चिप्स", price: "₹160", quantity: "500 ग्राम", desc: "बड़ा पैक चिप्स" },
+                    { name: "पापड़", price: "₹10", quantity: "1 पापड़", desc: "करारे और मसालेदार पापड़" }
                 ]
             },
             {
                 id: 5,
-                name: "जिला – रतलाम",
-                subtitle: "World Famous Ratlam",
+                name: "जिला – सीहोर",
+                subtitle: "Stall 5",
                 items: [
-                    { name: "नमकीन (250 ग्राम)", price: "₹60", quantity: "250 ग्राम", desc: "तीखी और स्वादिष्ट रतलामी नमकीन" },
-                    { name: "नमकीन (500 ग्राम)", price: "₹120", quantity: "500 ग्राम", desc: "शुद्ध मसालों का मेल" },
-                    { name: "रतलामी सेव (250 ग्राम)", price: "₹80", quantity: "250 ग्राम", desc: "असली रतलामी स्वाद" },
-                    { name: "रतलामी सेव (500 ग्राम)", price: "₹160", quantity: "500 ग्राम", desc: "बड़ा पैक" }
+                    { name: "नमकीन", price: "₹120", quantity: "500 ग्राम", desc: "सीहोर की खास नमकीन" },
+                    { name: "नमकीन", price: "₹240", quantity: "1 किलो", desc: "फुल पैक नमकीन" }
                 ]
             },
             {
                 id: 6,
-                name: "जिला – सीहोर",
-                subtitle: "Sehore Classics",
+                name: "जिला – मुरैना",
+                subtitle: "Stall 6",
                 items: [
-                    { name: "नमकीन (500 ग्राम)", price: "₹80", quantity: "500 ग्राम", desc: "सीहोर की खास नमकीन" },
-                    { name: "नमकीन (1 किलोग्राम)", price: "₹160", quantity: "1 किलोग्राम", desc: "फुल पैक" }
+                    { name: "गुजिया", price: "₹120", quantity: "300 ग्राम", desc: "चंबल की प्रसिद्ध गुजिया" },
+                    { name: "गुजिया", price: "₹200", quantity: "500 ग्राम", desc: "मिठास का संगम" },
+                    { name: "गुजिया", price: "₹300", quantity: "750 ग्राम", desc: "बड़ा पैक" },
+                    { name: "झर के लड्डू", price: "₹70", quantity: "300 ग्राम", desc: "शुद्ध मावा मिठाई" },
+                    { name: "झर के लड्डू", price: "₹130", quantity: "500 ग्राम", desc: "पसंदीदा मिठाई" },
+                    { name: "झर के लड्डू", price: "₹190", quantity: "750 ग्राम", desc: "उत्सव स्पेशल" }
                 ]
             },
             {
                 id: 7,
                 name: "जिला – मुरैना",
-                subtitle: "Morena Treasures",
+                subtitle: "Stall 7",
                 items: [
-                    { name: "गुजिया (200 ग्राम)", price: "₹70", quantity: "200 ग्राम", desc: "चंबल की प्रसिद्ध गुजिया" },
-                    { name: "गुजिया (500 ग्राम)", price: "₹130", quantity: "500 ग्राम", desc: "मिठास का संगम" },
-                    { name: "गुजिया (750 ग्राम)", price: "₹190", quantity: "750 ग्राम", desc: "बड़ा पैक" },
-                    { name: "बर्फी / लड्डू (300 ग्राम)", price: "₹70", quantity: "300 ग्राम", desc: "शुद्ध मावा मिठाई" },
-                    { name: "बर्फी / लड्डू (500 ग्राम)", price: "₹130", quantity: "500 ग्राम", desc: "पसंदीदा मिठाई" },
-                    { name: "बर्फी / लड्डू (750 ग्राम)", price: "₹190", quantity: "750 ग्राम", desc: "उत्सव स्पेशल" }
+                    { name: "सब्जी बेड़", price: "₹30", quantity: "1 प्लेट", desc: "गरमा गरम स्वादिष्ट बेड़" },
+                    { name: "आलू वड़ा", price: "₹20", quantity: "1 प्लेट", desc: "मसालेदार आलू वड़ा" },
+                    { name: "समोसा", price: "₹20", quantity: "1 प्लेट", desc: "खस्ता समोसा" },
+                    { name: "पकौड़ी", price: "₹20", quantity: "1 प्लेट", desc: "कुरकुरी पकौड़ी" }
                 ]
             },
             {
                 id: 8,
-                name: "जिला – मुरैना",
-                subtitle: "Morena Snacks",
-                items: [
-                    { name: "सब्जी ब्रेड", price: "₹30", quantity: "1 प्लेट", desc: "चटपटी सब्जी के साथ गरमा गरम ब्रेड" },
-                    { name: "ब्रेड पकोड़ा", price: "₹20", quantity: "1 पीस", desc: "क्रिस्पी ब्रेड पकोड़ा" },
-                    { name: "आलू वडा", price: "₹20", quantity: "100 ग्राम", desc: "मसालेदार आलू वडा" }
-                ]
-            },
-            {
-                id: 9,
                 name: "जिला – देवास",
-                subtitle: "Dewas Kitchen",
+                subtitle: "Stall 8",
                 items: [
-                    { name: "दही जलेबी", price: "₹30", quantity: "1 प्लेट", desc: "मीठी जलेबी ताज़ा दही के साथ" },
+                    { name: "पोहे जलेबी", price: "₹30", quantity: "1 प्लेट", desc: "मालवा का मशहूर नाश्ता" },
                     { name: "लड्डू", price: "₹50", quantity: "2 पीस", desc: "देसी घी के मोतीचूर लड्डू" },
                     { name: "दाल बाफले", price: "₹120", quantity: "1 प्लेट", desc: "मालवा का असली स्वाद" }
                 ]
@@ -344,15 +342,14 @@
             grid.innerHTML = stallData.map((stall, idx) => `
                 <div onclick="openStall(${stall.id})" class="stall-card spotlight-card glass p-10 md:p-14 rounded-[3.5rem] relative group reveal" style="transition-delay: ${idx * 50}ms">
                     <div class="mb-10 flex justify-between items-start">
-                        <span class="text-[9px] font-black text-yellow-500 uppercase tracking-[0.5em]">Madhya Pradesh</span>
+                        <span class="text-[9px] font-black text-yellow-500 uppercase tracking-[0.5em]">${stall.subtitle}</span>
                         <div class="w-12 h-12 rounded-full glass border-yellow-500/20 flex items-center justify-center text-white group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500">
                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </div>
                     </div>
                     <h3 class="text-3xl md:text-5xl font-black mb-4 text-white group-hover:text-yellow-500 transition-colors tracking-tighter">${stall.name}</h3>
-                    <p class="text-white/30 text-[10px] tracking-[0.2em] font-light uppercase mb-16 border-l-2 border-yellow-500/30 pl-6">${stall.subtitle}</p>
                     
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 mt-16">
                         <div class="h-[1.5px] w-8 bg-yellow-500/30 group-hover:w-20 transition-all duration-700"></div>
                         <span class="text-[10px] font-black uppercase tracking-[0.3em] text-white group-hover:translate-x-2 transition-all">Explore Menu</span>
                     </div>
