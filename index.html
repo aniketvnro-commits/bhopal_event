@@ -3,271 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aajeevika Swad Sangam Madhya Pradesh</title>
+    <title>Holi Mela - Aajeevika Swad Sangam</title>
     <!-- External Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@200;400;700&family=Poppins:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100;400;700;900&family=Poppins:wght@100;300;400;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #0f0b0a;
-            --accent: #d97706;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg-deep: #4d021c; /* Deep Magenta from the Mela Image */
+            --accent-yellow: #ffeb3b; /* Bright Yellow from the Image */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
             --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
         body {
             font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
             background-color: var(--bg-deep);
-            color: #e5e7eb;
+            color: #ffffff;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* Sophisticated Grain Overlay */
+        /* Festive Texture & Gulal Overlay */
         body::before {
             content: "";
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/feTurbulence%3E%3C/baseFilter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.035;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(255, 235, 59, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(194, 24, 91, 0.4) 0%, transparent 50%);
+            opacity: 0.8;
             pointer-events: none;
-            z-index: 50;
+            z-index: 1;
         }
 
+        /* Glassmorphism Refined */
         .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
         }
 
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.08) 0%, rgba(15, 11, 10, 0) 70%);
+        /* Spotlight Hover Effect with Yellow glow */
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .spotlight-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 235, 59, 0.1), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        @media (hover: hover) {
+            .spotlight-card:hover::after { opacity: 1; }
+            .spotlight-card:hover { transform: translateY(-15px) scale(1.02); border-color: var(--accent-yellow); }
         }
 
-        /* Animation Classes */
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .stall-card {
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            -webkit-tap-highlight-color: transparent;
+        /* Premium Yellow Outline Text */
+        .outline-text {
+            -webkit-text-stroke: 1.5px var(--accent-yellow);
+            color: transparent;
+            transition: all 0.5s;
+        }
+        @media (min-width: 1024px) {
+            .outline-text { -webkit-text-stroke: 2.5px var(--accent-yellow); }
         }
 
-        .stall-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(217, 119, 6, 0.4);
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Logo and Ring Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        @keyframes rotateSlow {
+        /* Rotating Lacy Element */
+        @keyframes rotate-lace {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        @keyframes rotateReverse {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0deg); }
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(220, 39, 67, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(220, 39, 67, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(220, 39, 67, 0); }
+        .lace-anim { animation: rotate-lace 50s linear infinite; }
+
+        /* Mobile specific heading adjustments */
+        @media (max-width: 640px) {
+            .hero-title-text { font-size: 16vw !important; line-height: 1 !important; }
         }
 
-        .float-anim { animation: float 8s ease-in-out infinite; }
-        .rotate-slow { transform-origin: center; animation: rotateSlow 20s linear infinite; }
-        .rotate-reverse { transform-origin: center; animation: rotateReverse 15s linear infinite; }
-        .insta-pulse { animation: pulse 2s infinite; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-deep); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-        /* Background Blobs */
-        .blob {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.05;
-        }
-        @media (min-width: 768px) {
-            .blob { width: 500px; height: 500px; filter: blur(120px); }
-        }
-
-        .modal-blur {
-            animation: modalBlur 0.4s forwards;
-        }
-
-        @keyframes modalBlur {
-            from { backdrop-filter: blur(0px); background: rgba(0,0,0,0); }
-            to { backdrop-filter: blur(15px); background: rgba(0,0,0,0.85); }
-        }
-
-        .outline-text {
-            -webkit-text-stroke: 1.5px #ea580c;
-            color: transparent;
-        }
-        @media (min-width: 1024px) {
-            .outline-text { -webkit-text-stroke: 2.5px #ea580c; }
-        }
-        
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .modal-open { overflow: hidden; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-yellow); border-radius: 10px; }
     </style>
 </head>
-<body class="overflow-x-hidden selection:bg-orange-500/30">
+<body class="selection:bg-yellow-500/40">
 
-    <div class="blob top-[-5%] left-[-5%]"></div>
-    <div class="blob bottom-[-5%] right-[-5%] opacity-[0.03]"></div>
-
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 w-full z-40 px-4 md:px-10 py-6 md:py-8 flex justify-between items-center mix-blend-difference">
-        <span class="text-[10px] md:text-xs tracking-[0.15em] md:tracking-[0.4em] font-bold uppercase truncate pr-4">Aajeevika Swad Sangam Madhya Pradesh</span>
-        <div class="h-[1px] w-8 md:w-12 bg-white/20"></div>
+    <!-- Premium Navigation -->
+    <nav class="fixed top-0 w-full z-[100] px-4 md:px-12 py-6 md:py-8 flex justify-between items-center mix-blend-difference">
+        <div class="flex flex-col">
+            <span class="text-[8px] md:text-xs tracking-[0.4em] font-black uppercase text-white truncate max-w-[200px] md:max-w-none">Aajeevika Swad Sangam</span>
+            <span class="text-[6px] md:text-[8px] tracking-[0.2em] font-light uppercase text-white/60">Madhya Pradesh Edition</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:block h-[1px] w-12 lg:w-24 bg-yellow-500/40"></div>
+            <a href="https://www.instagram.com/aajeevikaswadsangam/" target="_blank" class="text-[8px] md:text-[10px] uppercase font-black tracking-widest text-yellow-500 border border-yellow-500/20 px-4 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition-all">Follow Us</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 hero-gradient pt-24 md:pt-0">
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section class="relative min-h-screen flex flex-col justify-center px-4 md:px-20 pt-24 overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             
-            <!-- Left: Text Content -->
-            <div class="z-10 space-y-6 md:space-y-10 order-2 lg:order-1 text-center lg:text-left">
-                <div class="overflow-visible">
-                    <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-white leading-[1.1] tracking-tighter py-2" id="hero-title">
-                        खोजें <br><span class="text-orange-600 outline-text inline-block">उत्कृष्ट</span> <br>स्वाद!
+            <!-- Headlines Area -->
+            <div class="lg:col-span-7 z-10 space-y-8 md:space-y-12 text-center lg:text-left order-2 lg:order-1">
+                <div class="reveal active">
+                    <h1 class="hero-title-text text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] font-black text-white leading-[1.1] tracking-tighter">
+                        होली मेला <br><span class="outline-text block mt-2 md:mt-4">भोपाल हाट</span>
                     </h1>
                 </div>
                 
-                <p class="text-lg md:text-2xl text-stone-400 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed reveal" id="hero-desc">
-                    आजीविका फ्रेश मेला — जहाँ हर स्टॉल की अपनी एक कहानी है और हर स्वाद में शुद्धता का संगम है।
-                </p>
+                <div class="flex flex-col lg:flex-row items-center gap-4 md:gap-8 reveal active" style="transition-delay: 300ms">
+                    <div class="hidden lg:block h-[1px] w-12 bg-yellow-500"></div>
+                    <p class="text-xl md:text-3xl text-yellow-500 font-bold tracking-tight italic px-4 lg:px-0">
+                        "होली के रंग, आजीविका के संग"
+                    </p>
+                </div>
                 
-                <div class="pt-4 md:pt-6 reveal">
-                    <a href="#stalls" class="group relative inline-flex items-center gap-4 bg-white text-black px-10 md:px-12 py-4 md:py-5 rounded-full font-bold overflow-hidden transition-all hover:pr-16">
-                        <span class="relative z-10">स्टॉल देखें</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-all group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                        <div class="absolute inset-0 bg-orange-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <div class="reveal active" style="transition-delay: 500ms">
+                    <a href="#stalls" class="group relative inline-flex items-center gap-6 md:gap-8 bg-yellow-500 text-black px-10 md:px-14 py-4 md:py-6 rounded-full font-black uppercase tracking-[0.2em] text-[10px] md:text-xs shadow-[0_20px_50px_rgba(255,235,59,0.2)] transition-all hover:scale-105 active:scale-95">
+                        <span class="relative z-10">मेनू देखें</span>
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-2 transition-transform">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </div>
                     </a>
                 </div>
             </div>
 
-            <!-- Right: Artistic Logo Container -->
-            <div class="order-1 lg:order-2 flex justify-center lg:justify-end items-center relative py-10 lg:py-0">
-                <div class="float-anim w-full max-w-[320px] md:max-w-[500px] lg:max-w-[550px]">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="overflow-visible w-full h-auto">
-                        <defs>
-                            <clipPath id="circleClip">
-                                <circle cx="100" cy="100" r="62" />
-                            </clipPath>
-                            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#ea580c;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.2" />
-                            </linearGradient>
-                        </defs>
-                        
-                        <!-- Glowing Layers to ensure it doesn't look empty -->
-                        <circle cx="100" cy="100" r="75" fill="rgba(217, 119, 6, 0.08)" />
-                        <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" />
-                        <circle cx="100" cy="100" r="95" fill="none" stroke="url(#ringGrad)" stroke-width="0.75" stroke-dasharray="8 4" class="rotate-slow" />
-                        <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.25" stroke-dasharray="1 6" class="rotate-reverse" />
-                        
-                        <!-- Orbital Dots -->
-                        <circle cx="195" cy="100" r="1.5" fill="#ea580c" class="rotate-slow" />
-                        <circle cx="5" cy="100" r="1" fill="white" opacity="0.3" class="rotate-reverse" />
-
-                        <!-- Logo Centerpiece -->
-                        <circle cx="100" cy="100" r="65" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" />
-                        <image 
-                            href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-RMxF4nV-uWfO7CuVckSWh0RkntpkF8PHNw&s" 
-                            x="38" y="38" width="124" height="124" 
-                            clip-path="url(#circleClip)" 
-                            preserveAspectRatio="xMidYMid slice" />
-                    </svg>
+            <!-- Logo Branding (Lacy Style) -->
+            <div class="lg:col-span-5 flex justify-center lg:justify-end items-center relative py-6 md:py-12 order-1 lg:order-2">
+                <div class="relative w-full max-w-[280px] sm:max-w-[350px] md:max-w-[480px]">
+                    <!-- Rotating Lace Divider -->
+                    <div class="absolute inset-[-15%] md:inset-[-20%] lace-anim opacity-40">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="#ffeb3b" stroke-width="0.5" stroke-dasharray="2 6" />
+                            <circle cx="100" cy="100" r="82" fill="none" stroke="#ffeb3b" stroke-width="0.25" opacity="0.3" />
+                            <!-- Lace Dots -->
+                            <g fill="#ffeb3b">
+                                <circle cx="100" cy="5" r="3" />
+                                <circle cx="100" cy="195" r="3" />
+                                <circle cx="5" cy="100" r="3" />
+                                <circle cx="195" cy="100" r="3" />
+                            </g>
+                        </svg>
+                    </div>
+                    
+                    <div class="relative z-10 p-3 md:p-6 rounded-full glass border-yellow-500/20 shadow-[0_0_80px_rgba(194,24,91,0.5)]">
+                        <div class="aspect-square rounded-full overflow-hidden border-2 border-yellow-500">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-RMxF4nV-uWfO7CuVckSWh0RkntpkF8PHNw&s" class="w-full h-full object-cover scale-110" alt="Aajeevika Swad Sangam">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stall Grid -->
-    <section id="stalls" class="py-20 md:py-32 px-4 md:px-20 bg-[#0c0908]">
-        <div class="mb-12 md:mb-20 space-y-4 reveal">
-            <h2 class="text-[10px] md:text-xs uppercase tracking-[0.4em] md:tracking-[0.5em] text-orange-600 font-bold">Menu Selection</h2>
-            <p class="text-3xl md:text-4xl font-bold text-white">हमारा विशेष संग्रह</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="stall-grid">
-            <!-- Stalls injected by JS -->
+    <section id="stalls" class="py-24 md:py-40 px-4 md:px-20 relative z-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 md:mb-32 space-y-6 md:space-y-8 reveal">
+                <div class="flex items-center gap-4 md:gap-6">
+                    <span class="text-[9px] md:text-[11px] font-black uppercase tracking-[0.8em] text-yellow-500">District Menu</span>
+                    <div class="h-px flex-1 bg-white/10"></div>
+                </div>
+                <h2 class="text-4xl md:text-8xl font-black text-white tracking-tighter">हमारा विशेष संग्रह</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-14" id="stall-grid">
+                <!-- Stalls injected by JS -->
+            </div>
         </div>
     </section>
 
-    <!-- Detailed Menu Modal -->
-    <div id="menu-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/40 modal-overlay" onclick="closeModal()"></div>
-        <div class="bg-[#14100f] w-full max-w-xl rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,1)] relative z-10 transform translate-y-10 opacity-0 transition-all duration-500" id="modal-container">
-            <div id="modal-header" class="p-6 md:p-10 text-white flex justify-between items-start border-b border-white/5">
-                <div>
-                    <h2 id="modal-title" class="text-2xl md:text-4xl font-extrabold mb-1 md:mb-2 tracking-tight">स्टॉल का नाम</h2>
-                    <p id="modal-category" class="text-orange-500 uppercase tracking-[0.3em] text-[8px] md:text-[10px] font-black"></p>
+    <!-- Premium Modal -->
+    <div id="menu-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-[#0a0005]/95 backdrop-blur-3xl transition-opacity duration-700" onclick="closeModal()" id="modal-overlay"></div>
+        <div class="bg-[#2a0211]/80 w-full max-w-3xl rounded-[3rem] md:rounded-[4rem] overflow-hidden border border-yellow-500/20 shadow-[0_0_120px_rgba(0,0,0,1)] relative z-10 transform translate-y-32 opacity-0 transition-all duration-700 ease-out" id="modal-container">
+            <div class="p-8 md:p-20 max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-start mb-12 md:mb-16">
+                    <div class="space-y-3">
+                        <span id="modal-category" class="text-yellow-500 text-[9px] md:text-[11px] font-black uppercase tracking-[0.6em] block">मध्य प्रदेश</span>
+                        <h2 id="modal-title" class="text-4xl md:text-7xl font-black tracking-tighter text-white"></h2>
+                    </div>
+                    <button onclick="closeModal()" class="glass p-4 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
                 </div>
-                <button onclick="closeModal()" class="group bg-white/5 hover:bg-orange-600 p-3 md:p-4 rounded-full transition-all text-stone-400 hover:text-white">
-                    <svg width="18" height="18" md:width="20" md:height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </button>
-            </div>
-            <div class="p-6 md:p-10 space-y-6 md:space-y-8">
-                <ul id="modal-items" class="space-y-6 md:space-y-8">
-                    <!-- Menu items injected here -->
+                
+                <ul id="modal-items" class="space-y-12 mb-16 md:mb-24">
+                    <!-- Menu items -->
                 </ul>
-                <button onclick="closeModal()" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold py-4 md:py-5 rounded-2xl transition-all uppercase tracking-widest text-[10px] md:text-xs">
+
+                <button onclick="closeModal()" class="w-full bg-yellow-500 text-black font-black py-6 md:py-8 rounded-[2rem] text-xs uppercase tracking-[0.3em] hover:bg-white transition-all shadow-xl active:scale-95">
                     वापस जाएं
                 </button>
             </div>
         </div>
     </div>
 
-    <footer class="py-20 md:py-32 px-4 md:px-6 border-t border-white/5 text-center bg-[#0c0908]">
-        <div class="max-w-4xl mx-auto space-y-12 md:space-y-16">
-            
-            <div class="space-y-6 md:space-y-8">
-                <h3 class="text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.6em] font-bold text-stone-500 uppercase">Join Our Community</h3>
-                <div class="flex justify-center">
-                    <a href="https://www.instagram.com/aajeevikaswadsangam/" target="_blank" class="group relative inline-flex flex-col items-center">
-                        <div class="w-20 h-20 md:w-24 md:h-24 mb-4 md:mb-6 rounded-[2rem] md:rounded-[2.5rem] bg-[#1a1412] border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:-translate-y-3 group-hover:scale-110 insta-pulse">
-                            <svg class="w-8 h-8 md:w-10 md:h-10 text-white group-hover:text-pink-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                            <div class="absolute inset-0 rounded-[2rem] md:rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: var(--insta-gradient); z-index: -1;"></div>
+    <!-- Instagram Footer -->
+    <footer class="py-24 md:py-40 border-t border-white/5 bg-[#1a010a] relative z-30">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-12 md:space-y-20">
+            <div class="reveal">
+                <h3 class="text-[10px] tracking-[1em] font-black text-white/30 uppercase mb-12">Connect With Us</h3>
+                <a href="https://www.instagram.com/aajeevikaswadsangam/" target="_blank" class="group inline-flex flex-col items-center">
+                    <div class="relative w-24 h-24 md:w-32 md:h-32 mb-8">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-yellow-500 to-pink-600 rounded-[2.5rem] md:rounded-[3rem] rotate-12 group-hover:rotate-0 transition-transform duration-500"></div>
+                        <div class="absolute inset-0 bg-[#0a0005] m-[2px] rounded-[2.5rem] md:rounded-[3rem] flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </div>
-                        <span class="text-2xl md:text-3xl font-bold text-white tracking-tight">Instagram</span>
-                        <span class="mt-1 md:mt-2 text-[8px] md:text-xs font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-stone-500 group-hover:text-orange-500 transition-colors">Follow Our Journey</span>
-                    </a>
-                </div>
+                    </div>
+                    <span class="text-3xl md:text-5xl font-black tracking-tighter text-white">Instagram</span>
+                    <span class="text-yellow-500 text-[10px] font-black tracking-[0.5em] uppercase mt-4 block">@aajeevikaswadsangam</span>
+                </a>
             </div>
-
-            <p class="text-stone-600 text-[8px] md:text-[10px] tracking-[0.2em] md:tracking-[0.5em] uppercase pt-10 px-4">© 2024 Aajeevika Swad Sangam Madhya Pradesh</p>
+            <div class="pt-20 opacity-20 text-[8px] md:text-[10px] tracking-[0.6em] font-light uppercase px-4">
+                © 2024 Aajeevika Swad Sangam Madhya Pradesh
+            </div>
         </div>
     </footer>
 
@@ -275,153 +245,180 @@
         const stallData = [
             {
                 id: 1,
-                name: "STALL 1",
-                subtitle: "ताज़ा पेय",
-                category: "Beverages",
+                name: "जिला – भोपाल",
+                subtitle: "Bhopal Hatt Special",
                 items: [
-                    { name: "केसरिया लस्सी", desc: "शुद्ध दही और केसर का मिश्रण", price: "50 p." },
-                    { name: "मसाला छाछ", desc: "भुना जीरा और पुदीना युक्त", price: "30 p." },
-                    { name: "ताज़ा नींबू पानी", desc: "प्राकृतिक विटामिन सी से भरपूर", price: "20 p." }
+                    { name: "ठंडाई", price: "₹30", quantity: "1 गिलास", desc: "ताज़गी से भरपूर पारंपरिक ठंडाई" }
                 ]
             },
             {
                 id: 2,
-                name: "STALL 2",
-                subtitle: "चटपटा नाश्ता",
-                category: "Snacks",
+                name: "जिला – जबलपुर",
+                subtitle: "Jabalpur Flavors",
                 items: [
-                    { name: "आलू समोसा", desc: "खस्ता और मसालेदार", price: "30 p." },
-                    { name: "प्याज कचौड़ी", desc: "जोधपुरी स्टाइल", price: "25 p." },
-                    { name: "साबूदाना वड़ा", desc: "व्रत के लिए भी उत्तम", price: "45 p." }
+                    { name: "नमकीन", price: "₹50", quantity: "200 ग्राम", desc: "चटपटी जबलपुरिया नमकीन" }
                 ]
             },
             {
                 id: 3,
-                name: "STALL 3",
-                subtitle: "मुख्य भोजन",
-                category: "Main Course",
+                name: "जिला – जबलपुर",
+                subtitle: "Sweet Jabalpur",
                 items: [
-                    { name: "स्पेशल वेज थाली", desc: "5 विभिन्न व्यंजनों के साथ", price: "120 p." },
-                    { name: "दाल बाटी चूरमा", desc: "देसी घी का स्वाद", price: "100 p." },
-                    { name: "छोले भटूरे", desc: "पंजाबी स्टाइल मसाले", price: "80 p." }
+                    { name: "गुजिया (प्रति पीस)", price: "₹10", quantity: "1 पीस", desc: "मावे से भरपूर ताज़ा गुजिया" },
+                    { name: "गुजिया (पैकेट)", price: "₹100", quantity: "1 पैकेट", desc: "प्रीमियम गुजिया पैक" }
                 ]
             },
             {
                 id: 4,
-                name: "STALL 4",
-                subtitle: "क्षेत्रीय स्वाद",
-                category: "Regional",
+                name: "जिला – रीवा",
+                subtitle: "Rewa Delights",
                 items: [
-                    { name: "लिट्टी चोखा", desc: "बिहार का पारंपरिक गौरव", price: "70 p." },
-                    { name: "पाव भाजी", desc: "मुंबई का असली स्वाद", price: "60 p." },
-                    { name: "मक्की दी रोटी", desc: "सरसों साग के साथ", price: "90 p." }
+                    { name: "गुजिया (250 ग्राम)", price: "₹150", quantity: "250 ग्राम", desc: "विंध्य क्षेत्र की प्रसिद्ध गुजिया" },
+                    { name: "गुजिया (500 ग्राम)", price: "₹300", quantity: "500 ग्राम", desc: "पारिवारिक पैक" },
+                    { name: "गुजिया (1 किलोग्राम)", price: "₹600", quantity: "1 किलोग्राम", desc: "बड़ा उत्सव पैक" }
                 ]
             },
             {
                 id: 5,
-                name: "STALL 5",
-                subtitle: "दक्षिण संगम",
-                category: "South Indian",
+                name: "जिला – रतलाम",
+                subtitle: "World Famous Ratlam",
                 items: [
-                    { name: "मसाला डोसा", desc: "कुरकुरा और लाजवाब", price: "70 p." },
-                    { name: "इडली सांभर", desc: "मुलायम और ताज़ा", price: "40 p." },
-                    { name: "मेदू वड़ा", desc: "सांभर में डूबा हुआ", price: "50 p." }
+                    { name: "नमकीन (250 ग्राम)", price: "₹60", quantity: "250 ग्राम", desc: "तीखी और स्वादिष्ट रतलामी नमकीन" },
+                    { name: "नमकीन (500 ग्राम)", price: "₹120", quantity: "500 ग्राम", desc: "शुद्ध मसालों का मेल" },
+                    { name: "रतलामी सेव (250 ग्राम)", price: "₹80", quantity: "250 ग्राम", desc: "असली रतलामी स्वाद" },
+                    { name: "रतलामी सेव (500 ग्राम)", price: "₹160", quantity: "500 ग्राम", desc: "बड़ा पैक" }
                 ]
             },
             {
                 id: 6,
-                name: "STALL 6",
-                subtitle: "मीठा दरबार",
-                category: "Sweets",
+                name: "जिला – सीहोर",
+                subtitle: "Sehore Classics",
                 items: [
-                    { name: "जलेबी", desc: "शुद्ध घी में तली हुई", price: "40 p." },
-                    { name: "गुलाब जामुन", desc: "मावा से भरपूर", price: "30 p." },
-                    { name: "रसमलाई", desc: "स्वादिष्ट और मलाईदार", price: "50 p." }
+                    { name: "नमकीन (500 ग्राम)", price: "₹80", quantity: "500 ग्राम", desc: "सीहोर की खास नमकीन" },
+                    { name: "नमकीन (1 किलोग्राम)", price: "₹160", quantity: "1 किलोग्राम", desc: "फुल पैक" }
+                ]
+            },
+            {
+                id: 7,
+                name: "जिला – मुरैना",
+                subtitle: "Morena Treasures",
+                items: [
+                    { name: "गुजिया (200 ग्राम)", price: "₹70", quantity: "200 ग्राम", desc: "चंबल की प्रसिद्ध गुजिया" },
+                    { name: "गुजिया (500 ग्राम)", price: "₹130", quantity: "500 ग्राम", desc: "मिठास का संगम" },
+                    { name: "गुजिया (750 ग्राम)", price: "₹190", quantity: "750 ग्राम", desc: "बड़ा पैक" },
+                    { name: "बर्फी / लड्डू (300 ग्राम)", price: "₹70", quantity: "300 ग्राम", desc: "शुद्ध मावा मिठाई" },
+                    { name: "बर्फी / लड्डू (500 ग्राम)", price: "₹130", quantity: "500 ग्राम", desc: "पसंदीदा मिठाई" },
+                    { name: "बर्फी / लड्डू (750 ग्राम)", price: "₹190", quantity: "750 ग्राम", desc: "उत्सव स्पेशल" }
+                ]
+            },
+            {
+                id: 8,
+                name: "जिला – मुरैना",
+                subtitle: "Morena Snacks",
+                items: [
+                    { name: "सब्जी ब्रेड", price: "₹30", quantity: "1 प्लेट", desc: "चटपटी सब्जी के साथ गरमा गरम ब्रेड" },
+                    { name: "ब्रेड पकोड़ा", price: "₹20", quantity: "1 पीस", desc: "क्रिस्पी ब्रेड पकोड़ा" },
+                    { name: "आलू वडा", price: "₹20", quantity: "100 ग्राम", desc: "मसालेदार आलू वडा" }
+                ]
+            },
+            {
+                id: 9,
+                name: "जिला – देवास",
+                subtitle: "Dewas Kitchen",
+                items: [
+                    { name: "दही जलेबी", price: "₹30", quantity: "1 प्लेट", desc: "मीठी जलेबी ताज़ा दही के साथ" },
+                    { name: "लड्डू", price: "₹50", quantity: "2 पीस", desc: "देसी घी के मोतीचूर लड्डू" },
+                    { name: "दाल बाफले", price: "₹120", quantity: "1 प्लेट", desc: "मालवा का असली स्वाद" }
                 ]
             }
         ];
 
-        // Reveal on scroll logic
-        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         function renderStalls() {
             const grid = document.getElementById('stall-grid');
-            grid.innerHTML = stallData.map((stall, index) => `
-                <div onclick="openStall(${stall.id})" class="stall-card glass p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] relative group reveal" style="transition-delay: ${index * 100}ms">
-                    <div class="mb-4 md:mb-6 text-[8px] md:text-[10px] font-black text-orange-600 uppercase tracking-[0.3em] md:tracking-[0.4em] opacity-80">${stall.subtitle}</div>
-                    <h3 class="text-3xl md:text-4xl font-extrabold mb-2 md:mb-3 text-white transition-colors group-hover:text-orange-500">${stall.name}</h3>
-                    <p class="text-stone-500 text-[10px] md:text-xs tracking-widest uppercase mb-8 md:mb-10">${stall.category}</p>
-                    
-                    <div class="flex items-center gap-4 md:gap-6">
-                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-white group-hover:bg-orange-600 group-hover:border-orange-600 transition-all duration-500">
-                            <svg width="18" height="18" md:width="20" md:height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            grid.innerHTML = stallData.map((stall, idx) => `
+                <div onclick="openStall(${stall.id})" class="stall-card spotlight-card glass p-10 md:p-14 rounded-[3.5rem] relative group reveal" style="transition-delay: ${idx * 50}ms">
+                    <div class="mb-10 flex justify-between items-start">
+                        <span class="text-[9px] font-black text-yellow-500 uppercase tracking-[0.5em]">Madhya Pradesh</span>
+                        <div class="w-12 h-12 rounded-full glass border-yellow-500/20 flex items-center justify-center text-white group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </div>
-                        <span class="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 group-hover:text-white transition-colors">View Selection</span>
+                    </div>
+                    <h3 class="text-3xl md:text-5xl font-black mb-4 text-white group-hover:text-yellow-500 transition-colors tracking-tighter">${stall.name}</h3>
+                    <p class="text-white/30 text-[10px] tracking-[0.2em] font-light uppercase mb-16 border-l-2 border-yellow-500/30 pl-6">${stall.subtitle}</p>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="h-[1.5px] w-8 bg-yellow-500/30 group-hover:w-20 transition-all duration-700"></div>
+                        <span class="text-[10px] font-black uppercase tracking-[0.3em] text-white group-hover:translate-x-2 transition-all">Explore Menu</span>
                     </div>
                 </div>
             `).join('');
             
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            initSpotlight();
+        }
+
+        function initSpotlight() {
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                card.onmousemove = e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty("--mouse-x", `${x}px`);
+                    card.style.setProperty("--mouse-y", `${y}px`);
+                };
+            });
         }
 
         function openStall(id) {
             const stall = stallData.find(s => s.id === id);
             const modal = document.getElementById('menu-modal');
             const container = document.getElementById('modal-container');
-            const title = document.getElementById('modal-title');
-            const category = document.getElementById('modal-category');
             const list = document.getElementById('modal-items');
 
-            title.innerText = stall.name;
-            category.innerText = stall.category;
+            document.getElementById('modal-title').innerText = stall.name;
+            document.getElementById('modal-category').innerText = stall.subtitle;
             
             list.innerHTML = stall.items.map((item, idx) => `
-                <li class="flex justify-between items-center group opacity-0 translate-y-4" style="animation: fadeUp 0.5s forwards ${idx * 0.1 + 0.3}s">
-                    <div class="space-y-1">
-                        <h4 class="text-lg md:text-2xl font-bold text-white">${item.name}</h4>
-                        <p class="text-stone-500 text-[10px] md:text-xs font-light tracking-wide">${item.desc}</p>
+                <li class="flex flex-col md:flex-row md:justify-between md:items-end group opacity-0 translate-y-8" style="animation: slideUp 0.7s forwards ${idx * 0.1 + 0.3}s cubic-bezier(0.16, 1, 0.3, 1)">
+                    <div class="space-y-2">
+                        <h4 class="text-2xl md:text-4xl font-black text-white tracking-tighter transition-all group-hover:text-yellow-500">${item.name}</h4>
+                        <p class="text-white/40 text-[10px] md:text-xs font-light max-w-md tracking-wide italic italic">${item.desc}</p>
                     </div>
-                    <div class="text-right">
-                        <span class="text-lg md:text-xl font-black text-orange-500 block">${item.price}</span>
-                        <div class="h-[2px] w-0 bg-orange-600 group-hover:w-full transition-all duration-500"></div>
+                    <div class="mt-4 md:mt-0 text-left md:text-right border-t md:border-0 border-white/10 pt-4 md:pt-0">
+                        <span class="text-2xl md:text-4xl font-black text-yellow-500 block mb-1">${item.price}</span>
+                        <span class="text-[9px] md:text-[11px] font-bold text-white/50 uppercase tracking-widest">${item.quantity}</span>
+                        <div class="hidden md:block h-[2px] w-0 bg-yellow-500/50 group-hover:w-full transition-all duration-700 ml-auto mt-2"></div>
                     </div>
                 </li>
             `).join('');
 
             modal.classList.remove('hidden');
-            modal.classList.add('modal-blur');
+            document.body.classList.add('modal-open');
             setTimeout(() => {
-                container.classList.remove('translate-y-10', 'opacity-0');
+                container.classList.remove('translate-y-32', 'opacity-0');
             }, 50);
-            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            const modal = document.getElementById('menu-modal');
             const container = document.getElementById('modal-container');
-            container.classList.add('translate-y-10', 'opacity-0');
+            container.classList.add('translate-y-32', 'opacity-0');
             setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('modal-blur');
-                document.body.style.overflow = 'auto';
-            }, 400);
+                document.getElementById('menu-modal').classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 600);
         }
 
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        window.addEventListener('DOMContentLoaded', renderStalls);
 
-        window.addEventListener('DOMContentLoaded', () => {
-            renderStalls();
-            setTimeout(() => {
-                document.getElementById('hero-desc').classList.add('active');
-            }, 500);
-        });
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }`;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
